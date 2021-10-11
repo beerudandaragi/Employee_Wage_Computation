@@ -19,8 +19,7 @@ then
 else 
 	salary=0;
 fi
-<<<<<<< HEAD
-=======
+
 isparttime=1;
 isfulltime=2;
 emprateperhr=20;
@@ -34,10 +33,6 @@ then
 else
 	emphrs=0;
 fi
-#salary=$(($emphrs*$emprateperhr));
-#isparttime=1;
-#isfulltime=2;
-#emprateperhr=20;
 empcheck=$((RANDOM%3));
 case $empcheck in
         $isfulltime)
@@ -51,4 +46,4 @@ case $empcheck in
 	     ;;
 esac
 salary=$(($emphrs*$emprateperhr));
->>>>>>> UserCase4
+
