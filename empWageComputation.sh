@@ -45,11 +45,7 @@ case $empcheck in
         emphrs=0;
 	     ;;
 esac
-#salary=$(($emphrs*$emprateperhr));
-#isparttime=1;
-#isfulltime=2;
 totalsalary=0;
-#emprateperhr=20;
 numworkdays=20;
 
 for (( day=1; day<=$numworkdays; day++))
@@ -69,3 +65,35 @@ esac
 salary=$(($emphrs*$emprateperhr));
 totalsalary=$(($totalsalary+$salary));
 done
+IS_PART_TIME=1;
+IS_FULL_TIME=2;
+MAX_HRS_IN_MONTH=10;
+EMP_RATE_PER_HR=20;
+NUM_WORKING_DAYS=20;
+
+totalemphrs=0;
+totalworkingdays=0;
+while   [[ $totalemphrs -lt $MAX_HRS_IN_MONTH && $totalworkingdays -lt $NUM_WORKING_DAYS ]]
+
+do
+	((totalworkingdays ++))
+	empcheck=$((RANDOM%3));
+	case $empcheck in
+	   $IS_FULL_TIME)
+
+		emphrs=8
+		;;
+
+	   $IS_PART_TIME)
+		emphrs=4
+		;;
+            *)
+
+		emphrs=0
+		;;
+   esac
+   totalemphrs=$(($totalemphrs + $emphrs))
+
+done
+
+   totalsalary=$(($totalemphrs * $EMP_RATE_PER_HR))
